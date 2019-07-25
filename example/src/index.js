@@ -1,8 +1,11 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from "react";
+import ReactDOM from "react-dom";
 
-import './index.css'
-import App from './App'
+import "./index.css";
+import App from "./App";
 import DropzoneDialogExample from "./DropzoneDialogExample";
-
-ReactDOM.render(<DropzoneDialogExample />, document.getElementById('root'))
+import DropzoneAreaExample from "./DropzoneAreaExample";
+ReactDOM.render(
+  <DropzoneAreaExample hideIcon={true} />,
+  document.getElementById("root")
+);
