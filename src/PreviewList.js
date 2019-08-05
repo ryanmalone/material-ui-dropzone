@@ -17,7 +17,7 @@ const styles = {
         height: 40
     },
     smallPreviewImg: {
-        height: 100,
+        height: 20,
         width: 'initial',
         maxWidth: '100%',
         marginTop: 5,
@@ -56,9 +56,9 @@ function PreviewList(props){
                     );
                     return (
                         <Grid item xs={4} key={i} className={classes.imageContainer}>
-                            {img}
+                             {img} 
                             
-                            {showFileNames &&
+                            {
                                 <p>{fileObject.file.name}</p>
                             }
 

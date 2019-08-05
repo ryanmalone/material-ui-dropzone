@@ -1104,7 +1104,7 @@ var _default = (0, _createSvgIcon.default)(_react.default.createElement(_react.d
 exports.default = _default;
 });
 
-var CloudUploadIcon = unwrapExports(CloudUpload);
+unwrapExports(CloudUpload);
 
 function isImage(file) {
   var fileName = file.name || file.path;
@@ -1513,7 +1513,7 @@ var styles$2 = {
         height: 40
     },
     smallPreviewImg: {
-        height: 100,
+        height: 20,
         width: 'initial',
         maxWidth: '100%',
         marginTop: 5,
@@ -1554,7 +1554,7 @@ function PreviewList(props) {
                 Grid,
                 { item: true, xs: 4, key: i, className: classes.imageContainer },
                 img,
-                showFileNames && React.createElement(
+                React.createElement(
                     'p',
                     null,
                     fileObject.file.name
@@ -1777,6 +1777,7 @@ var DropzoneArea = function (_Component) {
 
       console.log("hideIcon ", hideIcon);
 
+      var fileUploaded = this.state.fileObjects.length > 0;
       var showPreviews = this.props.showPreviews && this.state.fileObjects.length > 0;
       var showPreviewsInDropzone = this.props.showPreviewsInDropzone && this.state.fileObjects.length > 0;
       return React.createElement(
@@ -1793,7 +1794,7 @@ var DropzoneArea = function (_Component) {
             rejectClassName: classes.rejectStripes,
             maxSize: this.props.maxFileSize
           },
-          React.createElement(
+          !fileUploaded && React.createElement(
             "div",
             { className: classes.dropzoneTextStyle },
             React.createElement(
@@ -1802,8 +1803,7 @@ var DropzoneArea = function (_Component) {
                 className: classnames(classes.dropzoneParagraph, this.props.dropzoneParagraphClass)
               },
               this.state.dropzoneText
-            ),
-            !this.state.hideIcon && React.createElement(CloudUploadIcon, { className: classes.uploadIconSize })
+            )
           ),
           showPreviewsInDropzone && React.createElement(PreviewList$1, {
             fileObjects: this.state.fileObjects,
@@ -1853,7 +1853,7 @@ var DropzoneArea = function (_Component) {
 }(Component);
 
 DropzoneArea.defaultProps = {
-  acceptedFiles: ["image/*", "video/*", "application/*"],
+  acceptedFiles: [".*"],
   filesLimit: 3,
   maxFileSize: 3000000,
   dropzoneText: "Drag and drop an image file here or click",

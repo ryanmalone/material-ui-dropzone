@@ -192,6 +192,7 @@ class DropzoneArea extends Component {
     const { classes, hideIcon } = this.props;
     console.log("hideIcon ", hideIcon);
 
+    const fileUploaded = this.state.fileObjects.length > 0;
     const showPreviews =
       this.props.showPreviews && this.state.fileObjects.length > 0;
     const showPreviewsInDropzone =
@@ -207,6 +208,9 @@ class DropzoneArea extends Component {
           rejectClassName={classes.rejectStripes}
           maxSize={this.props.maxFileSize}
         >
+
+        {!fileUploaded && (
+              
           <div className={classes.dropzoneTextStyle}>
             <p
               className={classNames(
@@ -216,10 +220,9 @@ class DropzoneArea extends Component {
             >
               {this.state.dropzoneText}
             </p>
-            {!this.state.hideIcon && (
-              <CloudUploadIcon className={classes.uploadIconSize} />
-            )}
+          
           </div>
+          )}
           {showPreviewsInDropzone && (
             <PreviewList
               fileObjects={this.state.fileObjects}
@@ -263,7 +266,7 @@ class DropzoneArea extends Component {
 }
 
 DropzoneArea.defaultProps = {
-  acceptedFiles: ["image/*", "video/*", "application/*"],
+  acceptedFiles: [".*"],
   filesLimit: 3,
   maxFileSize: 3000000,
   dropzoneText: "Drag and drop an image file here or click",
